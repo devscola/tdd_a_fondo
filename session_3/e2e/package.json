@@ -1,0 +1,16 @@
+{
+  "name": "e2e",
+  "version": "1.0.0",
+  "description": "End2end test suite",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.4.1",
+    "wdio-mocha-framework": "^0.5.10",
+    "wdio-spec-reporter": "^0.1.0",
+    "webdriverio": "^4.7.1"
+  },
+  "scripts": {
+    "test": "wdio ./wdio.conf.js"
+  }
+}
