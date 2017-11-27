@@ -6,4 +6,4 @@ RUN mkdir -p $APP
 WORKDIR $APP
 COPY . $APP
 
-RUN npm install
+CMD npm install
