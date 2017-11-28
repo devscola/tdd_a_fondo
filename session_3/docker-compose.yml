@@ -4,6 +4,8 @@ services:
     build: './sut'
     ports:
       - 8080:80
+    volumes:
+      - './sut/dist:/usr/share/nginx/html'
 
   selenium:
     image: selenium/standalone-chrome
