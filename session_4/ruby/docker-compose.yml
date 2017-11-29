@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  app:
+    build: .
+    ports:
+      - 7000:80
+    volumes:
+      - bundle:/usr/local/bundle
+      - '.:/app'
+    command: bash -c "rerun --background -- rackup --port=80 -o 0.0.0.0 config.ru"
+
+volumes:
+  bundle:
+    driver: local
