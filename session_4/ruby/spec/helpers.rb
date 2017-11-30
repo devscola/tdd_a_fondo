@@ -10,4 +10,12 @@ module Helpers
   def app
     Infrastructure::Dispatcher
   end
+
+  def last_parsed_response
+    JSON.parse(last_response.body)
+  end
+end
+
+
+class TestRepository < Repository
 end
