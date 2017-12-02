@@ -14,18 +14,20 @@ class Controller < Sinatra::Base
   post '/tips' do
     question = JSON.parse(request.body.read)
 
-    id = SecureRandom.hex
     tip_descriptor = {
-      "id" => id,
       "name" =>  question['name'],
       "address" =>  question['address'],
       "message" =>  question['message'],
       "advisor" =>  question['advisor']
     }
+    stored_tip = Repository.store(tip_descriptor)
 
-    Repository.store(tip_descriptor)
+    reply(stored_tip)
+  end
 
-    reply(tip_descriptor)
+  delete '/tips/:id' do
+    Repository.delete(params['id'])
+    reply({})
   end
 
   private

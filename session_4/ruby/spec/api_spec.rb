@@ -32,6 +32,16 @@ describe 'API' do
     expect(last_parsed_response['message']).to eq(tip['message'])
     expect(last_parsed_response['advisor']).to eq(tip['advisor'])
   end
+
+  it 'deletes an existing tip' do
+    tip = TipBuilder.a_tip.build
+    stored = TestRepository.store(tip)
+
+    delete "/tips/#{stored['id']}"
+
+    expect(last_response.status).to eq(200)
+    expect(TestRepository.exists?(stored['id'])).to eq(false)
+  end
 end
 
 class TipBuilder

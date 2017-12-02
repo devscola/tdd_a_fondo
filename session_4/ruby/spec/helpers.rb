@@ -18,4 +18,15 @@ end
 
 
 class TestRepository < Repository
+  def self.flush
+    @@data = []
+  end
+
+  def self.exists?(id)
+    stored = @@data.find do |entry|
+      entry['id'] == id
+    end
+
+    !stored.nil?
+  end
 end
